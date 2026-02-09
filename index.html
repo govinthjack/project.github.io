@@ -1,10 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Website</title>
+  <title>College Attendance</title>
 </head>
 <body>
-  <h1>Hello World</h1>
-  <p>My first GitHub website</p>
+
+<h1>College Attendance System</h1>
+
+<label>Programme:</label>
+<select id="programme" onchange="loadDepartments()">
+  <option>UG</option>
+  <option>PG</option>
+</select>
+
+<br><br>
+
+<label>Department:</label>
+<select id="department"></select>
+
+<script>
+const departments = {
+  UG: ["CSE", "ECE", "MECH", "CIVIL", "IT"],
+  PG: ["MCA", "MBA", "M.Tech CSE", "M.Tech ECE"]
+};
+
+function loadDepartments() {
+  const prog = document.getElementById("programme").value;
+  const dept = document.getElementById("department");
+  dept.innerHTML = "";
+
+  departments[prog].forEach(d => {
+    const opt = document.createElement("option");
+    opt.text = d;
+    dept.add(opt);
+  });
+}
+
+loadDepartments();
+</script>
+
 </body>
 </html>
